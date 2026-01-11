@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>高校实验室设备管理系统 - 总体架构图（横向完整版）</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f0f4f8;
+      margin: 0;
+      padding: 15px;
+      color: #1e293b;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .container {
+      width: 100%;
+      max-width: 1380px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    .header {
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
+      color: white;
+      padding: 10px 16px;
+      text-align: center;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 1.55rem;
+    }
+    .header p {
+      margin: 3px 0 0;
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+    .flow {
+      display: flex;
+      align-items: center;
+      padding: 12px 16px;
+      gap: 12px;
+      flex-wrap: nowrap;
+    }
+    .layer {
+      flex: 0 0 auto;
+      min-width: 180px;
+      max-width: 220px;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      background: #fff;
+      text-align: center;
+    }
+    .layer-title {
+      background: #eff6ff;
+      color: #1d4ed8;
+      padding: 6px 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border-bottom: 1px solid #bfdbfe;
+    }
+    .content {
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .horizontal-content {
+      flex-direction: row !important;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px !important;
+    }
+    .box {
+      background: #f8fafc;
+      border: 2px solid #93c5fd;
+      border-radius: 5px;
+      padding: 6px 10px;
+      font-size: 0.82rem;
+      min-height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1.2;
+    }
+    .highlight {
+      background: #dbeafe;
+      border-color: #3b82f6;
+      font-weight: 600;
+    }
+    .arrow {
+      font-size: 1.9rem;
+      color: #64748b;
+      font-weight: bold;
+      flex: 0 0 auto;
+      padding: 0 6px;
+    }
+    .bi-arrow {
+      color: #059669;
+    }
+    .aux {
+      background: #fefce8;
+      border: 1px solid #fef08a;
+      border-radius: 4px;
+      padding: 5px 8px;
+      margin: 6px 8px 8px;
+      font-size: 0.78rem;
+    }
+    .note {
+      font-size: 0.72rem;
+      color: #64748b;
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header">
+      <h1>高校实验室设备管理系统</h1>
+      <p>总体架构图（横向完整版）</p>
+    </div>
+
+    <div class="flow">
+
+      <!-- 用户 -->
+      <div class="layer">
+        <div class="layer-title">用户</div>
+        <div class="content">
+          <div class="box">学生/教师/管理员</div>
+          <div class="box">浏览器</div>
+        </div>
+      </div>
+
+      <div class="arrow">→ HTTPS</div>
+
+      <!-- 前端 -->
+      <div class="layer">
+        <div class="layer-title">前端 Vue 3</div>
+        <div class="content">
+          <div class="box highlight">Vue+Vite+Element Plus</div>
+          <div class="box">Pinia · Router · Axios</div>
+        </div>
+      </div>
+
+      <div class="arrow bi-arrow">↔</div>
+
+      <!-- 后端 -->
+      <div class="layer">
+        <div class="layer-title">后端 Spring Boot</div>
+        <div class="content">
+          <div class="box highlight">Controller</div>
+          <div class="box highlight">Service</div>
+          <div class="box">MyBatis-Plus</div>
+          <div class="box highlight">Security+JWT</div>
+          <div class="box highlight">AI服务</div>
+        </div>
+        <div class="aux">异常处理 + 日志</div>
+      </div>
+
+      <div class="arrow">→</div>
+
+      <!-- 数据层（横向排列） -->
+      <div class="layer">
+        <div class="layer-title">数据层</div>
+        <div class="content horizontal-content">
+          <div class="box highlight">MySQL 8.x</div>
+          <div class="box highlight">Redis</div>
+          <div class="box">知识库</div>
+        </div>
+      </div>
+
+      <div class="arrow bi-arrow">↔</div>
+
+      <!-- 外部AI -->
+      <div class="layer">
+        <div class="layer-title">外部AI</div>
+        <div class="content">
+          <div class="box highlight">通义千问 API</div>
+        </div>
+        <div class="note">知识库优先</div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
