@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: backend
+  datasource:
+    # 如果 MySQL 版本较低不支持 utf8mb4，可以改为 utf8 或直接去掉 characterEncoding 参数
+    url: jdbc:mysql://localhost:3306/lab_equipment_manager?useSSL=false&serverTimezone=UTC&characterEncoding=utf8
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+server:
+  port: 8080
+
+jwt:
+  secret: "lab-equipment-manager-secret-key-please-change"
+  expiration-seconds: 86400
+
+
