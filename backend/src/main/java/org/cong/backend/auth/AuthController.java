@@ -9,7 +9,6 @@ import org.cong.backend.security.JwtTokenProvider;
 import org.cong.backend.user.entity.User;
 import org.cong.backend.user.repository.UserRepository;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,14 +21,11 @@ public class AuthController {
 
     private final JwtTokenProvider tokenProvider;
     private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
 
     public AuthController(JwtTokenProvider tokenProvider,
-                          UserRepository userRepository,
-                          PasswordEncoder passwordEncoder) {
+                          UserRepository userRepository) {
         this.tokenProvider = tokenProvider;
         this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
     }
 
     @PostMapping("/login")
@@ -47,17 +43,8 @@ public class AuthController {
             return ResponseEntity.status(401)
                     .body(ApiResponse.error(401, "用户已被禁用"));
         }
-        boolean passwordOk = false;
-        // 优先按 BCrypt 校验（符合最终安全要求）
-        try {
-            passwordOk = passwordEncoder.matches(request.getPassword(), user.getPassword());
-        } catch (Exception ignored) {
-        }
-        // 兼容开发阶段可能存在的明文密码（如直接将密码字段设置为 'admin123'）
-        if (!passwordOk && request.getPassword().equals(user.getPassword())) {
-            passwordOk = true;
-        }
-        if (!passwordOk) {
+        // 暂时使用明文密码比较
+        if (!request.getPassword().equals(user.getPassword())) {
             return ResponseEntity.status(401)
                     .body(ApiResponse.error(401, "用户名或密码错误"));
         }
@@ -72,6 +59,7 @@ public class AuthController {
     }
 
     @PostMapping("/logout")
+    @SecurityRequirement(name = "bearerAuth")
     public ResponseEntity<ApiResponse<Void>> logout() {
         // JWT是无状态的，服务端不需要维护会话，这里只是逻辑上的注销
         return ResponseEntity.ok(ApiResponse.success("注销成功", null));
@@ -79,32 +67,24 @@ public class AuthController {
 
     @GetMapping("/me")
     @SecurityRequirement(name = "bearerAuth")
-    public ResponseEntity<ApiResponse<UserInfoResponse>> me(@RequestHeader(value = "Authorization", required = false) String authHeader) {
-        if (authHeader == null || authHeader.trim().isEmpty()) {
+    public ResponseEntity<ApiResponse<UserInfoResponse>> me() {
+        // 从 Spring Security 上下文获取当前用户
+        org.springframework.security.core.Authentication authentication = 
+            org.springframework.security.core.context.SecurityContextHolder.getContext().getAuthentication();
+        
+        if (authentication == null || !authentication.isAuthenticated()) {
             return ResponseEntity.status(401)
                     .body(ApiResponse.error(401, "未授权访问，请先登录"));
         }
         
-        try {
-            // 兼容 "Bearer {token}" 和直接 "{token}" 两种格式
-            String token = authHeader.trim();
-            if (token.startsWith("Bearer ")) {
-                token = token.substring(7);
-            }
-            
-            String username = tokenProvider.getUsername(token);
-            
-            User user = userRepository.findByUsername(username).orElse(null);
-            if (user == null) {
-                return ResponseEntity.status(404)
-                        .body(ApiResponse.error(404, "用户不存在"));
-            }
-            
-            return ResponseEntity.ok(ApiResponse.success("获取成功", toUserInfo(user)));
-        } catch (Exception e) {
-            return ResponseEntity.status(401)
-                    .body(ApiResponse.error(401, "Token已过期或无效，请重新登录"));
+        String username = authentication.getName();
+        User user = userRepository.findByUsername(username).orElse(null);
+        if (user == null) {
+            return ResponseEntity.status(404)
+                    .body(ApiResponse.error(404, "用户不存在"));
         }
+        
+        return ResponseEntity.ok(ApiResponse.success("获取成功", toUserInfo(user)));
     }
 
     private UserInfoResponse toUserInfo(User user) {

@@ -1,13 +1,14 @@
 package org.cong.backend.user.controller;
 
 import org.cong.backend.common.ApiResponse;
+import org.cong.backend.security.SecurityUtils;
 import org.cong.backend.user.dto.*;
 import org.cong.backend.user.service.UserService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.Principal;
 
 @RestController
 @RequestMapping("/api/v1/users")
@@ -20,6 +21,7 @@ public class UserController {
     }
 
     @GetMapping
+    @PreAuthorize("hasRole('admin')")
     public ResponseEntity<ApiResponse<PageResponse<UserListResponse>>> getUserList(
             @RequestParam(required = false) Integer page,
             @RequestParam(required = false) Integer size,
@@ -30,16 +32,15 @@ public class UserController {
             @RequestParam(required = false) Integer status,
             @RequestParam(required = false) String sortBy,
             @RequestParam(required = false) String sortOrder) {
-        // TODO: 权限校验 - 仅管理员可访问
         PageResponse<UserListResponse> result = userService.getUserList(
                 page, size, username, name, department, roleCode, status, sortBy, sortOrder);
         return ResponseEntity.ok(ApiResponse.success("获取成功", result));
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasRole('admin') or @permissionService.isCurrentUser(#id)")
     public ResponseEntity<ApiResponse<UserListResponse>> getUserById(
-            @PathVariable Long id, Principal principal) {
-        // TODO: 权限校验 - 管理员可查看所有用户，用户可查看自己的详情
+            @PathVariable Long id) {
         try {
             UserListResponse user = userService.getUserById(id);
             return ResponseEntity.ok(ApiResponse.success("获取成功", user));
@@ -50,9 +51,9 @@ public class UserController {
     }
 
     @PostMapping
+    @PreAuthorize("hasRole('admin')")
     public ResponseEntity<ApiResponse<UserListResponse>> createUser(
             @Validated @RequestBody CreateUserRequest request) {
-        // TODO: 权限校验 - 仅管理员可创建用户
         try {
             if (request.getUsername() == null || request.getPassword() == null ||
                 request.getName() == null || request.getRoleCode() == null) {
@@ -76,9 +77,9 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasRole('admin')")
     public ResponseEntity<ApiResponse<UserListResponse>> updateUser(
             @PathVariable Long id, @RequestBody UpdateUserRequest request) {
-        // TODO: 权限校验 - 仅管理员可更新用户
         try {
             UserListResponse user = userService.updateUser(id, request);
             return ResponseEntity.ok(ApiResponse.success("更新成功", user));
@@ -97,8 +98,8 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('admin')")
     public ResponseEntity<ApiResponse<Void>> deleteUser(@PathVariable Long id) {
-        // TODO: 权限校验 - 仅管理员可删除用户
         try {
             userService.deleteUser(id);
             return ResponseEntity.ok(ApiResponse.success("删除成功", null));
@@ -109,13 +110,12 @@ public class UserController {
     }
 
     @PutMapping("/{id}/password")
+    @PreAuthorize("hasRole('admin') or @permissionService.isCurrentUser(#id)")
     public ResponseEntity<ApiResponse<Void>> updatePassword(
             @PathVariable Long id,
-            @RequestBody UpdatePasswordRequest request,
-            Principal principal) {
-        // TODO: 权限校验 - 管理员可重置任何用户密码，用户可修改自己的密码
+            @RequestBody UpdatePasswordRequest request) {
         try {
-            String currentUsername = principal != null ? principal.getName() : null;
+            String currentUsername = SecurityUtils.getCurrentUsername();
             userService.updatePassword(id, request, currentUsername);
             return ResponseEntity.ok(ApiResponse.success("密码更新成功", null));
         } catch (RuntimeException e) {
@@ -132,9 +132,9 @@ public class UserController {
     }
 
     @DeleteMapping("/batch")
+    @PreAuthorize("hasRole('admin')")
     public ResponseEntity<ApiResponse<Void>> batchDeleteUsers(
             @RequestBody BatchDeleteRequest request) {
-        // TODO: 权限校验 - 仅管理员可批量删除用户
         try {
             if (request.getIds() == null || request.getIds().isEmpty()) {
                 return ResponseEntity.badRequest()
