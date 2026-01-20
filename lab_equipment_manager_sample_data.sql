@@ -6,7 +6,7 @@ USE lab_equipment_manager;
 -- 确保设备状态数据存在（如果已存在则忽略）
 INSERT IGNORE INTO `equipment_status` (`name`, `code`, `description`) VALUES
 ('待入库', 'pending', '设备已采购但尚未入库'),
-('已入库', 'instored', '设备已入库且可使用'),
+('已入库', 'instored', '设备已入库，可投入使用'),
 ('使用中', 'inuse', '设备正在使用中'),
 ('维修中', 'repairing', '设备正在维修中'),
 ('报废', 'scrapped', '设备已报废');
