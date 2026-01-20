@@ -16,6 +16,21 @@ const router = createRouter({
       name: 'home',
       component: () => import('../views/HomeView.vue'),
       meta: { requiresAuth: true },
+      redirect: '/laboratory',
+      children: [
+        {
+          path: '/laboratory',
+          name: 'laboratory',
+          component: () => import('../views/LaboratoryListView.vue'),
+          meta: { requiresAuth: true },
+        },
+        {
+          path: '/equipment',
+          name: 'equipment',
+          component: () => import('../views/EquipmentListView.vue'),
+          meta: { requiresAuth: true },
+        },
+      ],
     },
     {
       path: '/about',
