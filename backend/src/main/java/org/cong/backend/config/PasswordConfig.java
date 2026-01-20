@@ -2,21 +2,20 @@ package org.cong.backend.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
  * 密码编码器配置
- * 当前阶段使用 NoOpPasswordEncoder 支持明文密码，便于开发测试
- * 后续生产环境需要改为 BCryptPasswordEncoder
+ * 使用 BCryptPasswordEncoder 进行密码加密，安全可靠
  */
 @Configuration
 public class PasswordConfig {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        // 暂时使用明文密码，不进行加密
-        return NoOpPasswordEncoder.getInstance();
+        // 使用 BCrypt 加密密码，安全可靠
+        return new BCryptPasswordEncoder();
     }
 }
 

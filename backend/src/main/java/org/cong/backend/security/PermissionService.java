@@ -1,6 +1,5 @@
 package org.cong.backend.security;
 
-import org.cong.backend.user.entity.User;
 import org.cong.backend.user.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
