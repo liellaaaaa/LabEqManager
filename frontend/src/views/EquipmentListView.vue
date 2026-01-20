@@ -207,7 +207,13 @@ const dialogVisible = ref(false)
 const dialogTitle = ref('新增设备')
 const formRef = ref()
 const submitting = ref(false)
-const formData = reactive<CreateEquipmentRequest & { id?: number }>({
+type EquipmentFormModel = Omit<CreateEquipmentRequest, 'laboratoryId' | 'statusId'> & {
+  id?: number
+  laboratoryId?: number
+  statusId?: number
+}
+
+const formData = reactive<EquipmentFormModel>({
   name: '',
   model: '',
   specification: '',
@@ -217,8 +223,8 @@ const formData = reactive<CreateEquipmentRequest & { id?: number }>({
   supplier: '',
   purchaseDate: '',
   warrantyPeriod: undefined,
-  statusId: 0,
-  laboratoryId: 0,
+  statusId: undefined,
+  laboratoryId: undefined,
   description: ''
 })
 
@@ -236,8 +242,8 @@ const formRules = {
 const getStatusType = (code: string) => {
   const map: Record<string, 'danger' | 'success' | 'warning' | 'info'> = {
     pending: 'info',
-    instored: 'success',
-    inuse: 'warning',
+    instored: 'info',
+    inuse: 'success',
     repairing: 'warning',
     scrapped: 'danger'
   }
@@ -326,8 +332,8 @@ const handleAdd = () => {
     supplier: '',
     purchaseDate: '',
     warrantyPeriod: undefined,
-    statusId: statusList.value.find(s => s.code === 'instored')?.id || 0,
-    laboratoryId: 0,
+    statusId: statusList.value.find(s => s.code === 'instored')?.id,
+    laboratoryId: undefined,
     description: ''
   })
   dialogVisible.value = true
