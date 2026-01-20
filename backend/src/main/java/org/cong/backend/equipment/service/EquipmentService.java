@@ -1,11 +1,14 @@
 package org.cong.backend.equipment.service;
 
+import org.cong.backend.common.BusinessException;
 import org.cong.backend.equipment.dto.*;
 import org.cong.backend.equipment.entity.Equipment;
 
+import org.cong.backend.equipment.entity.EquipmentStatus;
 import org.cong.backend.equipment.repository.EquipmentRepository;
 import org.cong.backend.equipment.repository.EquipmentStatusRepository;
 
+import org.cong.backend.laboratory.entity.Laboratory;
 import org.cong.backend.laboratory.repository.LaboratoryRepository;
 import org.cong.backend.user.dto.PageResponse;
 import org.springframework.data.domain.Page;
@@ -111,7 +114,7 @@ public class EquipmentService {
 
     public EquipmentDetailResponse getEquipmentById(Long id) {
         Equipment equipment = equipmentRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("设备不存在"));
+                .orElseThrow(() -> BusinessException.notFound("设备不存在"));
         return toEquipmentDetailResponse(equipment);
     }
 
@@ -120,17 +123,25 @@ public class EquipmentService {
         // 检查资产编号是否已存在
         if (StringUtils.hasText(request.getAssetCode())) {
             if (equipmentRepository.findByAssetCode(request.getAssetCode()).isPresent()) {
-                throw new RuntimeException("资产编号已存在");
+                throw BusinessException.conflict("资产编号已存在");
             }
         }
         
         // 验证状态ID是否存在
         equipmentStatusRepository.findById(request.getStatusId())
-                .orElseThrow(() -> new RuntimeException("设备状态不存在"));
+                .orElseThrow(() -> BusinessException.badRequest("设备状态不存在"));
         
-        // 验证实验室ID是否存在
-        laboratoryRepository.findById(request.getLaboratoryId())
-                .orElseThrow(() -> new RuntimeException("实验室不存在"));
+        // 验证实验室ID是否存在且有效
+        Laboratory lab = laboratoryRepository.findById(request.getLaboratoryId())
+                .orElseThrow(() -> BusinessException.badRequest("实验室不存在或无效"));
+        // 可选规则：实验室状态为“维护中”时禁止新增设备
+        if (lab.getStatus() != null && lab.getStatus() == 2) {
+            throw BusinessException.conflict("实验室维护中，禁止新增设备");
+        }
+        // status=0 不可用，也视为“无效”
+        if (lab.getStatus() != null && lab.getStatus() == 0) {
+            throw BusinessException.conflict("实验室不可用，禁止新增设备");
+        }
         
         Equipment equipment = new Equipment();
         equipment.setName(request.getName());
@@ -153,7 +164,7 @@ public class EquipmentService {
     @Transactional
     public EquipmentListResponse updateEquipment(Long id, UpdateEquipmentRequest request) {
         Equipment equipment = equipmentRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("设备不存在"));
+                .orElseThrow(() -> BusinessException.notFound("设备不存在"));
         
         if (StringUtils.hasText(request.getName())) {
             equipment.setName(request.getName());
@@ -169,7 +180,7 @@ public class EquipmentService {
             equipmentRepository.findByAssetCode(request.getAssetCode())
                     .ifPresent(existing -> {
                         if (!existing.getId().equals(id)) {
-                            throw new RuntimeException("资产编号已存在");
+                            throw BusinessException.conflict("资产编号已存在");
                         }
                     });
             equipment.setAssetCode(request.getAssetCode());
@@ -190,8 +201,10 @@ public class EquipmentService {
             equipment.setWarrantyPeriod(request.getWarrantyPeriod());
         }
         if (request.getLaboratoryId() != null) {
-            if (!laboratoryRepository.findById(request.getLaboratoryId()).isPresent()) {
-                throw new RuntimeException("实验室不存在");
+            Laboratory lab = laboratoryRepository.findById(request.getLaboratoryId())
+                    .orElseThrow(() -> BusinessException.badRequest("实验室不存在或无效"));
+            if (lab.getStatus() != null && lab.getStatus() == 0) {
+                throw BusinessException.conflict("实验室不可用，禁止变更所属实验室");
             }
             equipment.setLaboratoryId(request.getLaboratoryId());
         }
@@ -206,7 +219,7 @@ public class EquipmentService {
     @Transactional
     public void deleteEquipment(Long id) {
         if (!equipmentRepository.existsById(id)) {
-            throw new RuntimeException("设备不存在");
+            throw BusinessException.notFound("设备不存在");
         }
         equipmentRepository.deleteById(id);
     }
@@ -214,7 +227,7 @@ public class EquipmentService {
     @Transactional
     public void batchDeleteEquipment(List<Long> ids) {
         if (ids == null || ids.isEmpty()) {
-            throw new RuntimeException("设备ID列表不能为空");
+            throw BusinessException.badRequest("设备ID列表不能为空");
         }
         equipmentRepository.deleteAllById(ids);
     }
@@ -222,14 +235,46 @@ public class EquipmentService {
     @Transactional
     public EquipmentListResponse updateStatus(Long id, UpdateEquipmentStatusRequest request) {
         Equipment equipment = equipmentRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("设备不存在"));
+                .orElseThrow(() -> BusinessException.notFound("设备不存在"));
         
-        equipmentStatusRepository.findById(request.getStatusId())
-                .orElseThrow(() -> new RuntimeException("设备状态不存在"));
+        EquipmentStatus fromStatus = equipmentStatusRepository.findById(equipment.getStatusId())
+                .orElseThrow(() -> BusinessException.badRequest("设备状态不存在"));
+        EquipmentStatus toStatus = equipmentStatusRepository.findById(request.getStatusId())
+                .orElseThrow(() -> BusinessException.badRequest("设备状态不存在"));
+
+        // 简单版状态流转校验：禁止非法跳转（如“待入库”直接到“报废”）
+        if (!isAllowedTransition(fromStatus.getCode(), toStatus.getCode())) {
+            throw BusinessException.conflict("设备状态流转不合法");
+        }
         
         equipment.setStatusId(request.getStatusId());
         Equipment updated = equipmentRepository.save(equipment);
         return toEquipmentListResponse(updated);
+    }
+
+    /**
+     * 允许的状态流转（基于 equipment_status.code）
+     * pending(待入库) -> instored(已入库)
+     * instored(已入库) -> inuse(使用中) / scrapped(报废)
+     * inuse(使用中) -> repairing(维修中) / scrapped(报废)
+     * repairing(维修中) -> inuse(使用中) / scrapped(报废)
+     * scrapped(报废) -> (无)
+     */
+    private boolean isAllowedTransition(String fromCode, String toCode) {
+        if (!StringUtils.hasText(fromCode) || !StringUtils.hasText(toCode)) {
+            return false;
+        }
+        if (fromCode.equals(toCode)) {
+            return true;
+        }
+        return switch (fromCode) {
+            case "pending" -> "instored".equals(toCode);
+            case "instored" -> "inuse".equals(toCode) || "scrapped".equals(toCode);
+            case "inuse" -> "repairing".equals(toCode) || "scrapped".equals(toCode);
+            case "repairing" -> "inuse".equals(toCode) || "scrapped".equals(toCode);
+            case "scrapped" -> false;
+            default -> false;
+        };
     }
 
     private EquipmentListResponse toEquipmentListResponse(Equipment equipment) {

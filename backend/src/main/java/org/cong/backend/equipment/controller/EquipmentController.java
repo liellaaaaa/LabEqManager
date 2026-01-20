@@ -1,6 +1,7 @@
 package org.cong.backend.equipment.controller;
 
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import org.cong.backend.common.BusinessException;
 import org.cong.backend.common.ApiResponse;
 import org.cong.backend.equipment.dto.*;
 import org.cong.backend.equipment.service.EquipmentService;
@@ -58,6 +59,9 @@ public class EquipmentController {
         try {
             EquipmentDetailResponse equipment = equipmentService.getEquipmentById(id);
             return ResponseEntity.ok(ApiResponse.success("获取成功", equipment));
+        } catch (BusinessException e) {
+            return ResponseEntity.status(e.getHttpStatus())
+                    .body(ApiResponse.error(e.getCode(), e.getMessage()));
         } catch (RuntimeException e) {
             return ResponseEntity.status(404)
                     .body(ApiResponse.error(404, e.getMessage()));
@@ -71,6 +75,9 @@ public class EquipmentController {
         try {
             EquipmentListResponse equipment = equipmentService.createEquipment(request);
             return ResponseEntity.ok(ApiResponse.success("创建成功", equipment));
+        } catch (BusinessException e) {
+            return ResponseEntity.status(e.getHttpStatus())
+                    .body(ApiResponse.error(e.getCode(), e.getMessage()));
         } catch (RuntimeException e) {
             if (e.getMessage().contains("资产编号已存在")) {
                 return ResponseEntity.status(409)
@@ -88,6 +95,9 @@ public class EquipmentController {
         try {
             EquipmentListResponse equipment = equipmentService.updateEquipment(id, request);
             return ResponseEntity.ok(ApiResponse.success("更新成功", equipment));
+        } catch (BusinessException e) {
+            return ResponseEntity.status(e.getHttpStatus())
+                    .body(ApiResponse.error(e.getCode(), e.getMessage()));
         } catch (RuntimeException e) {
             if (e.getMessage().contains("设备不存在")) {
                 return ResponseEntity.status(404)
@@ -108,6 +118,9 @@ public class EquipmentController {
         try {
             equipmentService.deleteEquipment(id);
             return ResponseEntity.ok(ApiResponse.success("删除成功", null));
+        } catch (BusinessException e) {
+            return ResponseEntity.status(e.getHttpStatus())
+                    .body(ApiResponse.error(e.getCode(), e.getMessage()));
         } catch (RuntimeException e) {
             return ResponseEntity.status(404)
                     .body(ApiResponse.error(404, e.getMessage()));
@@ -125,6 +138,9 @@ public class EquipmentController {
             }
             equipmentService.batchDeleteEquipment(request.getIds());
             return ResponseEntity.ok(ApiResponse.success("批量删除成功", null));
+        } catch (BusinessException e) {
+            return ResponseEntity.status(e.getHttpStatus())
+                    .body(ApiResponse.error(e.getCode(), e.getMessage()));
         } catch (RuntimeException e) {
             return ResponseEntity.badRequest()
                     .body(ApiResponse.error(400, e.getMessage()));
@@ -138,6 +154,9 @@ public class EquipmentController {
         try {
             EquipmentListResponse equipment = equipmentService.updateStatus(id, request);
             return ResponseEntity.ok(ApiResponse.success("状态更新成功", equipment));
+        } catch (BusinessException e) {
+            return ResponseEntity.status(e.getHttpStatus())
+                    .body(ApiResponse.error(e.getCode(), e.getMessage()));
         } catch (RuntimeException e) {
             if (e.getMessage().contains("设备不存在") || e.getMessage().contains("设备状态不存在")) {
                 return ResponseEntity.status(404)
