@@ -32,5 +32,14 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
                 .body(ApiResponse.error(401, "未授权访问，请先登录"));
     }
+
+    /**
+     * 处理业务异常（400/404/409 等）
+     */
+    @ExceptionHandler(BusinessException.class)
+    public ResponseEntity<ApiResponse<Void>> handleBusinessException(BusinessException e) {
+        return ResponseEntity.status(e.getHttpStatus())
+                .body(ApiResponse.error(e.getCode(), e.getMessage()));
+    }
 }
 
