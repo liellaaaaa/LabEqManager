@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
 import { useUserStore } from '@/stores/user'
-import { OfficeBuilding, Tools } from '@element-plus/icons-vue'
+import { OfficeBuilding, Tools, DocumentAdd, List, Finished, AlarmClock } from '@element-plus/icons-vue'
 
 const router = useRouter()
 const userStore = useUserStore()
@@ -37,6 +37,22 @@ const navigateTo = (path: string) => {
             <el-menu-item index="/equipment">
               <el-icon><Tools /></el-icon>
               <span>设备管理</span>
+            </el-menu-item>
+            <el-menu-item index="/borrow/apply">
+              <el-icon><DocumentAdd /></el-icon>
+              <span>申请借用</span>
+            </el-menu-item>
+            <el-menu-item index="/borrow/my">
+              <el-icon><List /></el-icon>
+              <span>我的借用</span>
+            </el-menu-item>
+            <el-menu-item v-if="userStore.isAdmin()" index="/borrow/approval">
+              <el-icon><Finished /></el-icon>
+              <span>借用审批/出借</span>
+            </el-menu-item>
+            <el-menu-item v-if="userStore.isAdmin()" index="/borrow/approval#overdue">
+              <el-icon><AlarmClock /></el-icon>
+              <span>逾期标记</span>
             </el-menu-item>
           </el-menu>
         </el-aside>

@@ -30,6 +30,24 @@ const router = createRouter({
           component: () => import('../views/EquipmentListView.vue'),
           meta: { requiresAuth: true },
         },
+        {
+          path: '/borrow/apply',
+          name: 'borrowApply',
+          component: () => import('../views/BorrowApplyView.vue'),
+          meta: { requiresAuth: true },
+        },
+        {
+          path: '/borrow/my',
+          name: 'borrowMy',
+          component: () => import('../views/BorrowMyListView.vue'),
+          meta: { requiresAuth: true },
+        },
+        {
+          path: '/borrow/approval',
+          name: 'borrowApproval',
+          component: () => import('../views/BorrowApprovalView.vue'),
+          meta: { requiresAuth: true },
+        },
       ],
     },
     {
