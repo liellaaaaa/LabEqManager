@@ -48,6 +48,24 @@ const router = createRouter({
           component: () => import('../views/BorrowApprovalView.vue'),
           meta: { requiresAuth: true },
         },
+        {
+          path: '/reservation/apply',
+          name: 'reservationApply',
+          component: () => import('../views/ReservationApplyView.vue'),
+          meta: { requiresAuth: true },
+        },
+        {
+          path: '/reservation/my',
+          name: 'reservationMy',
+          component: () => import('../views/ReservationMyListView.vue'),
+          meta: { requiresAuth: true },
+        },
+        {
+          path: '/reservation/approval',
+          name: 'reservationApproval',
+          component: () => import('../views/ReservationApprovalView.vue'),
+          meta: { requiresAuth: true },
+        },
       ],
     },
     {
