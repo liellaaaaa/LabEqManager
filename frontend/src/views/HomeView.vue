@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
 import { useUserStore } from '@/stores/user'
-import { OfficeBuilding, Tools, DocumentAdd, List, Finished, AlarmClock } from '@element-plus/icons-vue'
+import { OfficeBuilding, Tools, DocumentAdd, List, Finished, AlarmClock, Setting, Delete } from '@element-plus/icons-vue'
 
 const router = useRouter()
 const userStore = useUserStore()
@@ -53,6 +53,30 @@ const navigateTo = (path: string) => {
             <el-menu-item v-if="userStore.isAdmin()" index="/borrow/approval#overdue">
               <el-icon><AlarmClock /></el-icon>
               <span>逾期标记</span>
+            </el-menu-item>
+            <el-menu-item index="/repair/apply">
+              <el-icon><Setting /></el-icon>
+              <span>申请维修</span>
+            </el-menu-item>
+            <el-menu-item index="/repair/my">
+              <el-icon><List /></el-icon>
+              <span>我的维修</span>
+            </el-menu-item>
+            <el-menu-item v-if="userStore.isAdmin()" index="/repair/management">
+              <el-icon><Setting /></el-icon>
+              <span>维修管理</span>
+            </el-menu-item>
+            <el-menu-item index="/scrap/apply">
+              <el-icon><Delete /></el-icon>
+              <span>申请报废</span>
+            </el-menu-item>
+            <el-menu-item index="/scrap/my">
+              <el-icon><List /></el-icon>
+              <span>我的报废</span>
+            </el-menu-item>
+            <el-menu-item v-if="userStore.isAdmin()" index="/scrap/approval">
+              <el-icon><Finished /></el-icon>
+              <span>报废审批</span>
             </el-menu-item>
           </el-menu>
         </el-aside>

@@ -66,6 +66,42 @@ const router = createRouter({
           component: () => import('../views/ReservationApprovalView.vue'),
           meta: { requiresAuth: true },
         },
+        {
+          path: '/repair/apply',
+          name: 'repairApply',
+          component: () => import('../views/RepairApplyView.vue'),
+          meta: { requiresAuth: true },
+        },
+        {
+          path: '/repair/my',
+          name: 'repairMy',
+          component: () => import('../views/RepairMyListView.vue'),
+          meta: { requiresAuth: true },
+        },
+        {
+          path: '/repair/management',
+          name: 'repairManagement',
+          component: () => import('../views/RepairManagementView.vue'),
+          meta: { requiresAuth: true },
+        },
+        {
+          path: '/scrap/apply',
+          name: 'scrapApply',
+          component: () => import('../views/ScrapApplyView.vue'),
+          meta: { requiresAuth: true },
+        },
+        {
+          path: '/scrap/my',
+          name: 'scrapMy',
+          component: () => import('../views/ScrapMyListView.vue'),
+          meta: { requiresAuth: true },
+        },
+        {
+          path: '/scrap/approval',
+          name: 'scrapApproval',
+          component: () => import('../views/ScrapApprovalView.vue'),
+          meta: { requiresAuth: true },
+        },
       ],
     },
     {
