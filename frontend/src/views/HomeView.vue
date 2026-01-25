@@ -1,14 +1,44 @@
 <script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useUserStore } from '@/stores/user'
-import { OfficeBuilding, Tools, DocumentAdd, List, Finished, AlarmClock, Setting, Delete } from '@element-plus/icons-vue'
+import { OfficeBuilding, Tools, DocumentAdd, List, Finished, AlarmClock, Setting, Delete, DataAnalysis, Bell } from '@element-plus/icons-vue'
+import { getReminders } from '@/api/statistics'
 
 const router = useRouter()
 const userStore = useUserStore()
 
+const reminderCount = ref(0)
+let reminderTimer: number | null = null
+
 const navigateTo = (path: string) => {
   router.push(path)
 }
+
+// 加载提醒数量
+const loadReminderCount = async () => {
+  try {
+    const response = await getReminders()
+    if (response.code === 200 && response.data) {
+      reminderCount.value = response.data.reminderCount || 0
+    }
+  } catch (error) {
+    // 静默失败，不影响页面加载
+    console.error('加载提醒数量失败', error)
+  }
+}
+
+onMounted(() => {
+  loadReminderCount()
+  // 每30秒刷新一次提醒数量
+  reminderTimer = window.setInterval(loadReminderCount, 30000)
+})
+
+onUnmounted(() => {
+  if (reminderTimer) {
+    clearInterval(reminderTimer)
+  }
+})
 </script>
 
 <template>
@@ -78,6 +108,27 @@ const navigateTo = (path: string) => {
               <el-icon><Finished /></el-icon>
               <span>报废审批</span>
             </el-menu-item>
+            <el-menu-item index="/reservation/apply">
+              <el-icon><OfficeBuilding /></el-icon>
+              <span>申请预约</span>
+            </el-menu-item>
+            <el-menu-item index="/reservation/my">
+              <el-icon><List /></el-icon>
+              <span>我的预约</span>
+            </el-menu-item>
+            <el-menu-item v-if="userStore.isAdmin()" index="/reservation/approval">
+              <el-icon><Finished /></el-icon>
+              <span>预约审批</span>
+            </el-menu-item>
+            <el-menu-item v-if="userStore.isAdmin() || userStore.isTeacher()" index="/statistics">
+              <el-icon><DataAnalysis /></el-icon>
+              <span>统计报表</span>
+            </el-menu-item>
+            <el-menu-item index="/reminders">
+              <el-icon><Bell /></el-icon>
+              <span>到期提醒</span>
+              <el-badge v-if="reminderCount > 0" :value="reminderCount" class="reminder-badge" />
+            </el-menu-item>
           </el-menu>
         </el-aside>
         <el-main class="main">
@@ -130,5 +181,9 @@ const navigateTo = (path: string) => {
 .main {
   padding: 20px;
   background-color: #f0f2f5;
+}
+
+.reminder-badge {
+  margin-left: 8px;
 }
 </style>

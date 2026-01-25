@@ -102,6 +102,18 @@ const router = createRouter({
           component: () => import('../views/ScrapApprovalView.vue'),
           meta: { requiresAuth: true },
         },
+        {
+          path: '/statistics',
+          name: 'statistics',
+          component: () => import('../views/StatisticsView.vue'),
+          meta: { requiresAuth: true },
+        },
+        {
+          path: '/reminders',
+          name: 'reminders',
+          component: () => import('../views/ReminderView.vue'),
+          meta: { requiresAuth: true },
+        },
       ],
     },
     {
