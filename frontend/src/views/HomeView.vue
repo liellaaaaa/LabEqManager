@@ -124,6 +124,10 @@ onUnmounted(() => {
               <el-icon><DataAnalysis /></el-icon>
               <span>统计报表</span>
             </el-menu-item>
+            <el-menu-item index="/ai">
+              <el-icon><DataAnalysis /></el-icon>
+              <span>AI 智能助手</span>
+            </el-menu-item>
             <el-menu-item index="/reminders">
               <el-icon><Bell /></el-icon>
               <span>到期提醒</span>

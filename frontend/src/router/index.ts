@@ -114,6 +114,12 @@ const router = createRouter({
           component: () => import('../views/ReminderView.vue'),
           meta: { requiresAuth: true },
         },
+        {
+          path: '/ai',
+          name: 'aiAssistant',
+          component: () => import('../views/AiAssistantView.vue'),
+          meta: { requiresAuth: true },
+        },
       ],
     },
     {
