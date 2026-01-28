@@ -23,4 +23,9 @@ jwt:
   secret: "lab-equipment-manager-secret-key-please-change"
   expiration-seconds: 86400
 
+# DashScope 通义千问配置
+dashscope:
+  apiKey: "sk-dabaebc949af43ef835632c6e37a860f"  # 请在此处配置您的 DashScope API Key
+  model: "qwen-turbo"  # 可选：qwen-turbo, qwen-plus, qwen-max 等
+
 
