@@ -1,35 +1,25 @@
 @import './base.css';
 
+html,
+body {
+  height: 100%;
+}
+
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
+  height: 100%;
+  width: 100%;
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
+/* 让后台布局全宽展示，避免 Vite 模板的居中/双栏网格影响页面 */
+body {
+  margin: 0;
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
-}
-
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
+/* 小屏下对话框自适应（避免固定宽度溢出） */
+@media (max-width: 768px) {
+  .el-dialog {
+    width: 92vw !important;
+    max-width: 92vw !important;
+    margin: 0 auto !important;
   }
 }
