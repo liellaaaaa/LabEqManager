@@ -27,9 +27,6 @@ public class Laboratory {
     @Column(nullable = false, length = 200)
     private String location;
 
-    @Column(columnDefinition = "DECIMAL(10,2)")
-    private Double area;
-
     @Column
     private Integer capacity;
 

@@ -10,7 +10,6 @@ public class LaboratoryDetailResponse {
     private String name;
     private String code;
     private String location;
-    private Double area;
     private Integer capacity;
     private String type;
     private Integer status;

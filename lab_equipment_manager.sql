@@ -48,7 +48,6 @@ CREATE TABLE IF NOT EXISTS `laboratory` (
   `name` VARCHAR(100) NOT NULL COMMENT '实验室名称',
   `code` VARCHAR(50) NOT NULL COMMENT '实验室编号',
   `location` VARCHAR(200) NOT NULL COMMENT '实验室位置',
-  `area` DECIMAL(10,2) DEFAULT NULL COMMENT '实验室面积',
   `capacity` INT DEFAULT NULL COMMENT '容纳人数',
   `type` VARCHAR(50) DEFAULT NULL COMMENT '实验室类型',
   `status` TINYINT NOT NULL DEFAULT 1 COMMENT '状态：0-不可用，1-可用，2-维护中',

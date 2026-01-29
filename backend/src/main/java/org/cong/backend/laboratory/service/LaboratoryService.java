@@ -119,7 +119,6 @@ public class LaboratoryService {
         laboratory.setName(request.getName());
         laboratory.setCode(request.getCode());
         laboratory.setLocation(request.getLocation());
-        laboratory.setArea(request.getArea());
         laboratory.setCapacity(request.getCapacity());
         laboratory.setType(request.getType());
         laboratory.setStatus(request.getStatus() != null ? request.getStatus() : 1);
@@ -150,9 +149,6 @@ public class LaboratoryService {
         }
         if (StringUtils.hasText(request.getLocation())) {
             laboratory.setLocation(request.getLocation());
-        }
-        if (request.getArea() != null) {
-            laboratory.setArea(request.getArea());
         }
         if (request.getCapacity() != null) {
             laboratory.setCapacity(request.getCapacity());
@@ -210,7 +206,6 @@ public class LaboratoryService {
         response.setName(laboratory.getName());
         response.setCode(laboratory.getCode());
         response.setLocation(laboratory.getLocation());
-        response.setArea(laboratory.getArea());
         response.setCapacity(laboratory.getCapacity());
         response.setType(laboratory.getType());
         response.setStatus(laboratory.getStatus());
@@ -234,7 +229,6 @@ public class LaboratoryService {
         response.setName(laboratory.getName());
         response.setCode(laboratory.getCode());
         response.setLocation(laboratory.getLocation());
-        response.setArea(laboratory.getArea());
         response.setCapacity(laboratory.getCapacity());
         response.setType(laboratory.getType());
         response.setStatus(laboratory.getStatus());

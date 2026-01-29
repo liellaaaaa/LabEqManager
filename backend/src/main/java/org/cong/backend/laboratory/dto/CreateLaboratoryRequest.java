@@ -13,8 +13,6 @@ public class CreateLaboratoryRequest {
 
     @NotBlank(message = "实验室位置不能为空")
     private String location;
-
-    private Double area;
     private Integer capacity;
     private String type;
     private Integer status = 1; // 默认可用

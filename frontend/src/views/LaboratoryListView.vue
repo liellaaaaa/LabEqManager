@@ -35,7 +35,6 @@
         <el-table-column prop="name" label="实验室名称" width="200" />
         <el-table-column prop="location" label="位置" width="150" />
         <el-table-column prop="type" label="类型" width="120" />
-        <el-table-column prop="area" label="面积(㎡)" width="100" />
         <el-table-column prop="capacity" label="容纳人数" width="100" />
         <el-table-column prop="status" label="状态" width="100">
           <template #default="{ row }">
@@ -84,9 +83,6 @@
         </el-form-item>
         <el-form-item label="位置" prop="location">
           <el-input v-model="formData.location" placeholder="请输入位置" />
-        </el-form-item>
-        <el-form-item label="面积(㎡)">
-          <el-input-number v-model="formData.area" :min="0" :precision="2" />
         </el-form-item>
         <el-form-item label="容纳人数">
           <el-input-number v-model="formData.capacity" :min="0" />
@@ -153,7 +149,6 @@ const formData = reactive<CreateLaboratoryRequest & { id?: number }>({
   name: '',
   code: '',
   location: '',
-  area: undefined,
   capacity: undefined,
   type: '',
   status: 1,
@@ -194,7 +189,7 @@ const loadData = async () => {
       ...searchForm
     })
     if (response.code === 200 && response.data) {
-      tableData.value = response.data.list
+      tableData.value = (response.data.list || []).slice().sort((a, b) => (b.id || 0) - (a.id || 0))
       pagination.total = response.data.total
     } else {
       ElMessage.error(response.message || '获取数据失败')
@@ -227,7 +222,6 @@ const handleAdd = () => {
     name: '',
     code: '',
     location: '',
-    area: undefined,
     capacity: undefined,
     type: '',
     status: 1,
@@ -245,7 +239,6 @@ const handleEdit = (row: LaboratoryItem) => {
     name: row.name,
     code: row.code,
     location: row.location,
-    area: row.area,
     capacity: row.capacity,
     type: row.type || '',
     status: row.status,
@@ -359,6 +352,12 @@ onMounted(() => {
   margin-top: 20px;
   display: flex;
   justify-content: flex-end;
+}
+
+@media (max-width: 768px) {
+  .laboratory-list-container {
+    padding: 12px;
+  }
 }
 </style>
 
