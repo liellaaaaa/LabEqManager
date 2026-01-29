@@ -32,7 +32,7 @@ const fetchList = async () => {
       size: pagination.size,
       status: filters.status,
     })
-    tableData.value = resp.data?.list || []
+    tableData.value = (resp.data?.list || []).slice().sort((a, b) => (b.id || 0) - (a.id || 0))
     pagination.total = resp.data?.total || 0
   } catch (e: any) {
     console.error(e)
@@ -133,10 +133,17 @@ onMounted(fetchList)
   display: flex;
   gap: 10px;
   margin-bottom: 12px;
+  flex-wrap: wrap;
 }
 .pager {
   margin-top: 12px;
   text-align: right;
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding: 12px;
+  }
 }
 </style>
 

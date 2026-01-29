@@ -7,7 +7,6 @@ export interface LaboratoryItem {
   name: string
   code: string
   location: string
-  area: number | null
   capacity: number | null
   type: string | null
   status: number
@@ -36,7 +35,6 @@ export interface CreateLaboratoryRequest {
   name: string
   code: string
   location: string
-  area?: number
   capacity?: number
   type?: string
   status?: number
@@ -49,7 +47,6 @@ export interface UpdateLaboratoryRequest {
   name?: string
   code?: string
   location?: string
-  area?: number
   capacity?: number
   type?: string
   managerId?: number

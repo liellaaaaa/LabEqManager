@@ -255,7 +255,9 @@ const loadLaboratoryList = async () => {
   try {
     const response = await getLaboratoryList({ page: 1, size: 1000 })
     if (response.code === 200 && response.data) {
-      laboratoryList.value = response.data.list
+      laboratoryList.value = (response.data.list || [])
+        .slice()
+        .sort((a, b) => (a.id || 0) - (b.id || 0))
     }
   } catch (error) {
     console.error('加载实验室列表失败', error)
@@ -291,7 +293,7 @@ const loadData = async () => {
       ...searchForm
     })
     if (response.code === 200 && response.data) {
-      tableData.value = response.data.list
+      tableData.value = (response.data.list || []).slice().sort((a, b) => (b.id || 0) - (a.id || 0))
       pagination.total = response.data.total
     } else {
       ElMessage.error(response.message || '获取数据失败')
@@ -466,6 +468,12 @@ onMounted(async () => {
   margin-top: 20px;
   display: flex;
   justify-content: flex-end;
+}
+
+@media (max-width: 768px) {
+  .equipment-list-container {
+    padding: 12px;
+  }
 }
 </style>
 

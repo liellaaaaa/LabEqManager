@@ -123,11 +123,17 @@ const handleLogin = async () => {
 }
 
 .login-box {
-  width: 420px;
+  width: min(420px, 92vw);
   padding: 40px;
   background: white;
   border-radius: 12px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 480px) {
+  .login-box {
+    padding: 24px;
+  }
 }
 
 .login-header {
