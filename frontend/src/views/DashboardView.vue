@@ -44,6 +44,9 @@ const reservationRemindersPreview = computed(
 )
 
 const loadStats = async () => {
+  if (!userStore.isAdmin() && !userStore.isTeacher()) {
+    return
+  }
   loadingStats.value = true
   try {
     const [equipmentRes, borrowRes] = await Promise.all([
@@ -106,7 +109,7 @@ onMounted(() => {
     </div>
 
     <el-row :gutter="20" class="stats-row">
-      <el-col :span="8">
+      <el-col v-if="userStore.isAdmin() || userStore.isTeacher()" :xs="24" :sm="12" :md="8">
         <el-card v-loading="loadingStats">
           <template #header>
             <div class="card-header">
@@ -124,7 +127,7 @@ onMounted(() => {
         </el-card>
       </el-col>
 
-      <el-col :span="8">
+      <el-col v-if="userStore.isAdmin() || userStore.isTeacher()" :xs="24" :sm="12" :md="8">
         <el-card v-loading="loadingStats">
           <template #header>
             <div class="card-header">
@@ -144,7 +147,7 @@ onMounted(() => {
         </el-card>
       </el-col>
 
-      <el-col :span="8">
+      <el-col :xs="24" :sm="12" :md="8">
         <el-card v-loading="loadingReminders">
           <template #header>
             <div class="card-header">
@@ -199,7 +202,7 @@ onMounted(() => {
     </el-card>
 
     <el-row :gutter="20" class="reminder-preview-row">
-      <el-col :span="12">
+      <el-col :xs="24" :md="12">
         <el-card v-loading="loadingReminders">
           <template #header>
             <div class="card-header">
@@ -230,7 +233,7 @@ onMounted(() => {
         </el-card>
       </el-col>
 
-      <el-col :span="12">
+      <el-col :xs="24" :md="12">
         <el-card v-loading="loadingReminders">
           <template #header>
             <div class="card-header">
