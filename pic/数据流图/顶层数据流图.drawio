@@ -1,0 +1,69 @@
+<mxfile host="Electron" modified="2026-02-07T02:32:59.117Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.2.5 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="1X1AJNFJdUxymNJpT4Il" version="24.2.5" type="device">
+  <diagram name="第 1 页" id="RBLcmhy0vWBqvJ2VnXEQ">
+    <mxGraphModel dx="1212" dy="577" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="83ZOv_GHtEv-hUKcCdpm-288" value="数据存储" style="whiteSpace=wrap;strokeWidth=2;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="499" y="70" width="149" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="83ZOv_GHtEv-hUKcCdpm-289" value="(数据库&#xa;MySQL)" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="539" y="105" width="70" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="83ZOv_GHtEv-hUKcCdpm-290" value="系统" style="whiteSpace=wrap;strokeWidth=2;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="60" y="254" width="241" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="83ZOv_GHtEv-hUKcCdpm-291" value="高校实验室设备管理系统" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="85" y="293" width="191" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="83ZOv_GHtEv-hUKcCdpm-292" value="外部实体" style="whiteSpace=wrap;strokeWidth=2;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="499" y="210" width="149" height="217" as="geometry" />
+        </mxCell>
+        <mxCell id="83ZOv_GHtEv-hUKcCdpm-293" value="用户&#xa;(学生/教师)" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="524" y="254" width="99" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="83ZOv_GHtEv-hUKcCdpm-294" value="管理员" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="542" y="354" width="63" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="83ZOv_GHtEv-hUKcCdpm-295" value="输入: 查询/申请/咨询" style="curved=1;startArrow=none;endArrow=block;exitX=0.002059011748342803;exitY=0.8591421366280168;entryX=1;entryY=0.4953210774589987;rounded=0;" edge="1" parent="1" source="83ZOv_GHtEv-hUKcCdpm-293" target="83ZOv_GHtEv-hUKcCdpm-291">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="499" y="306" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="83ZOv_GHtEv-hUKcCdpm-296" value="输出: 结果/回复/记录" style="curved=1;startArrow=none;endArrow=block;exitX=0.7327616114752534;exitY=-0.0033420394448673025;entryX=0.002059011748342803;entryY=0.24816549222324624;rounded=0;" edge="1" parent="1" source="83ZOv_GHtEv-hUKcCdpm-291" target="83ZOv_GHtEv-hUKcCdpm-293">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="261" y="260" />
+              <mxPoint x="499" y="260" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="83ZOv_GHtEv-hUKcCdpm-297" value="输入: 审批/维护/管理" style="curved=1;startArrow=none;endArrow=block;exitX=0.004408034067305308;exitY=0.7490473446545723;entryX=0.6260428440154996;entryY=0.9939841943628648;rounded=0;" edge="1" parent="1" source="83ZOv_GHtEv-hUKcCdpm-294" target="83ZOv_GHtEv-hUKcCdpm-291">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="499" y="391" />
+              <mxPoint x="261" y="391" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="83ZOv_GHtEv-hUKcCdpm-298" value="输出: 审批结果/统计/确认" style="curved=1;startArrow=none;endArrow=block;exitX=0.7749088673558351;exitY=0.9939841943628648;entryX=0.004408034067305308;entryY=0.17812968194013812;rounded=0;" edge="1" parent="1" source="83ZOv_GHtEv-hUKcCdpm-291" target="83ZOv_GHtEv-hUKcCdpm-294">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="261" y="345" />
+              <mxPoint x="499" y="345" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="83ZOv_GHtEv-hUKcCdpm-299" value="读写数据" style="curved=1;startArrow=block;endArrow=block;exitX=0.5608145729177099;exitY=-0.0033420394448673025;entryX=-0.00033471243722098216;entryY=0.49909095764160155;rounded=0;" edge="1" parent="1" source="83ZOv_GHtEv-hUKcCdpm-291" target="83ZOv_GHtEv-hUKcCdpm-289">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="261" y="130" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
