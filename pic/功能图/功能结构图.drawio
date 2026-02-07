@@ -1,0 +1,115 @@
+<mxfile host="Electron" modified="2026-02-06T03:47:18.487Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.2.5 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="e44VTNSDV-BuPfWnjI4E" version="24.2.5" type="device">
+  <diagram name="第 1 页" id="DwL7G8HXGNL1PlZo9UOn">
+    <mxGraphModel dx="1535" dy="731" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="616T4s3kknOnOVlv37uN-266" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="107" width="220" height="223" as="geometry" />
+        </mxCell>
+        <mxCell id="616T4s3kknOnOVlv37uN-267" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="107" width="230" height="223" as="geometry" />
+        </mxCell>
+        <mxCell id="616T4s3kknOnOVlv37uN-268" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="940" y="107" width="170" height="223" as="geometry" />
+        </mxCell>
+        <mxCell id="616T4s3kknOnOVlv37uN-269" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="107" width="228" height="223" as="geometry" />
+        </mxCell>
+        <mxCell id="616T4s3kknOnOVlv37uN-270" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="470" y="107" width="220" height="223" as="geometry" />
+        </mxCell>
+        <mxCell id="616T4s3kknOnOVlv37uN-265" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="107" width="170" height="223" as="geometry" />
+        </mxCell>
+        <mxCell id="616T4s3kknOnOVlv37uN-187" value="单轮自然语言输入" style="whiteSpace=wrap;strokeWidth=2;direction=south;" vertex="1" parent="1">
+          <mxGeometry x="1131" y="170" width="34" height="143" as="geometry" />
+        </mxCell>
+        <mxCell id="616T4s3kknOnOVlv37uN-188" value="AI智能助手" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1128" y="120" width="210" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="616T4s3kknOnOVlv37uN-189" value="知识库优先匹配" style="whiteSpace=wrap;strokeWidth=2;direction=south;" vertex="1" parent="1">
+          <mxGeometry x="1188" y="170" width="34" height="143" as="geometry" />
+        </mxCell>
+        <mxCell id="616T4s3kknOnOVlv37uN-190" value="通义千问API兜底" style="whiteSpace=wrap;strokeWidth=2;direction=south;" vertex="1" parent="1">
+          <mxGeometry x="1246" y="170" width="34" height="143" as="geometry" />
+        </mxCell>
+        <mxCell id="616T4s3kknOnOVlv37uN-191" value="常见问题咨询" style="whiteSpace=wrap;strokeWidth=2;direction=south;" vertex="1" parent="1">
+          <mxGeometry x="1304" y="170" width="34" height="143" as="geometry" />
+        </mxCell>
+        <mxCell id="616T4s3kknOnOVlv37uN-193" value="维修申请与审批" style="whiteSpace=wrap;strokeWidth=2;direction=south;" vertex="1" parent="1">
+          <mxGeometry x="949" y="170.375" width="34" height="142.25" as="geometry" />
+        </mxCell>
+        <mxCell id="616T4s3kknOnOVlv37uN-194" value="维修与报废管理" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="950" y="120" width="150" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="616T4s3kknOnOVlv37uN-195" value="报废申请与审批" style="whiteSpace=wrap;strokeWidth=2;direction=south;" vertex="1" parent="1">
+          <mxGeometry x="1007" y="170" width="34" height="143" as="geometry" />
+        </mxCell>
+        <mxCell id="616T4s3kknOnOVlv37uN-196" value="状态更新记录" style="whiteSpace=wrap;strokeWidth=2;direction=south;" vertex="1" parent="1">
+          <mxGeometry x="1065" y="170" width="34" height="143" as="geometry" />
+        </mxCell>
+        <mxCell id="616T4s3kknOnOVlv37uN-198" value="预约申请提交" style="whiteSpace=wrap;strokeWidth=2;direction=south;" vertex="1" parent="1">
+          <mxGeometry x="708" y="170" width="34" height="143" as="geometry" />
+        </mxCell>
+        <mxCell id="616T4s3kknOnOVlv37uN-199" value="实验室预约管理" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="710" y="120" width="210" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="616T4s3kknOnOVlv37uN-200" value="时间冲突检测" style="whiteSpace=wrap;strokeWidth=2;direction=south;" vertex="1" parent="1">
+          <mxGeometry x="766" y="170" width="34" height="143" as="geometry" />
+        </mxCell>
+        <mxCell id="616T4s3kknOnOVlv37uN-201" value="管理员审批" style="whiteSpace=wrap;strokeWidth=2;direction=south;" vertex="1" parent="1">
+          <mxGeometry x="824" y="170.375" width="34" height="142.25" as="geometry" />
+        </mxCell>
+        <mxCell id="616T4s3kknOnOVlv37uN-202" value="预约状态管理" style="whiteSpace=wrap;strokeWidth=2;direction=south;" vertex="1" parent="1">
+          <mxGeometry x="882" y="170.375" width="34" height="142.25" as="geometry" />
+        </mxCell>
+        <mxCell id="616T4s3kknOnOVlv37uN-204" value="借用申请提交" style="whiteSpace=wrap;strokeWidth=2;direction=south;" vertex="1" parent="1">
+          <mxGeometry x="477" y="170.375" width="34" height="142.25" as="geometry" />
+        </mxCell>
+        <mxCell id="616T4s3kknOnOVlv37uN-205" value="设备借用与归还流程" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="480" y="120" width="200" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="616T4s3kknOnOVlv37uN-206" value="管理员审批" style="whiteSpace=wrap;strokeWidth=2;direction=south;" vertex="1" parent="1">
+          <mxGeometry x="535" y="170.375" width="34" height="142.25" as="geometry" />
+        </mxCell>
+        <mxCell id="616T4s3kknOnOVlv37uN-207" value="借用记录跟踪" style="whiteSpace=wrap;strokeWidth=2;direction=south;" vertex="1" parent="1">
+          <mxGeometry x="593" y="170.375" width="34" height="142.25" as="geometry" />
+        </mxCell>
+        <mxCell id="616T4s3kknOnOVlv37uN-208" value="归还确认与逾期标记" style="whiteSpace=wrap;strokeWidth=2;direction=south;" vertex="1" parent="1">
+          <mxGeometry x="653" y="170.375" width="30" height="142.25" as="geometry" />
+        </mxCell>
+        <mxCell id="616T4s3kknOnOVlv37uN-210" value="设备信息增删改查" style="whiteSpace=wrap;strokeWidth=2;direction=south;" vertex="1" parent="1">
+          <mxGeometry x="246" y="170" width="34" height="143" as="geometry" />
+        </mxCell>
+        <mxCell id="616T4s3kknOnOVlv37uN-211" value="设备与实验室管理" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="250" y="120" width="200" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="616T4s3kknOnOVlv37uN-212" value="设备状态流转管理" style="whiteSpace=wrap;strokeWidth=2;direction=south;" vertex="1" parent="1">
+          <mxGeometry x="304" y="170" width="34" height="143" as="geometry" />
+        </mxCell>
+        <mxCell id="616T4s3kknOnOVlv37uN-213" value="实验室信息维护" style="whiteSpace=wrap;strokeWidth=2;direction=south;" vertex="1" parent="1">
+          <mxGeometry x="362" y="170.375" width="34" height="142.25" as="geometry" />
+        </mxCell>
+        <mxCell id="616T4s3kknOnOVlv37uN-214" value="实验室与设备关联" style="whiteSpace=wrap;strokeWidth=2;direction=south;" vertex="1" parent="1">
+          <mxGeometry x="420" y="170" width="34" height="143" as="geometry" />
+        </mxCell>
+        <mxCell id="616T4s3kknOnOVlv37uN-216" value="JWT 令牌生成与校验" style="whiteSpace=wrap;strokeWidth=2;direction=south;" vertex="1" parent="1">
+          <mxGeometry x="70" y="170.375" width="40" height="142.25" as="geometry" />
+        </mxCell>
+        <mxCell id="616T4s3kknOnOVlv37uN-217" value="用户认证与角色权限管理" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="70" y="120" width="153" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="616T4s3kknOnOVlv37uN-218" value="角色分配与权限控制" style="whiteSpace=wrap;strokeWidth=2;direction=south;" vertex="1" parent="1">
+          <mxGeometry x="128" y="170.375" width="40" height="142.25" as="geometry" />
+        </mxCell>
+        <mxCell id="616T4s3kknOnOVlv37uN-219" value="登录/注销功能" style="whiteSpace=wrap;strokeWidth=2;direction=south;" vertex="1" parent="1">
+          <mxGeometry x="189" y="170.375" width="34" height="142.25" as="geometry" />
+        </mxCell>
+        <mxCell id="616T4s3kknOnOVlv37uN-220" value="高校实验室设备管理系统" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="600" y="40" width="200" height="50" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
