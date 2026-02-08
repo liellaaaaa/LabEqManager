@@ -1,0 +1,72 @@
+<mxfile host="Electron" modified="2026-02-08T07:36:45.350Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.2.5 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="YZh4K3wadMppKKMTL3Gz" version="24.2.5" type="device">
+  <diagram name="第 1 页" id="b-fO3XVY249PV74SMVfX">
+    <mxGraphModel dx="1151" dy="548" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="COVKdI0WCa1drq1Nx2R--1" value="User" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=65;" vertex="1" parent="1">
+          <mxGeometry x="20" y="20" width="150" height="568" as="geometry" />
+        </mxCell>
+        <mxCell id="COVKdI0WCa1drq1Nx2R--2" value="Controller" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=65;" vertex="1" parent="1">
+          <mxGeometry x="308" y="20" width="150" height="568" as="geometry" />
+        </mxCell>
+        <mxCell id="COVKdI0WCa1drq1Nx2R--3" value="Service" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=65;" vertex="1" parent="1">
+          <mxGeometry x="508" y="20" width="150" height="568" as="geometry" />
+        </mxCell>
+        <mxCell id="COVKdI0WCa1drq1Nx2R--4" value="DB" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=65;" vertex="1" parent="1">
+          <mxGeometry x="728" y="20" width="150" height="568" as="geometry" />
+        </mxCell>
+        <mxCell id="COVKdI0WCa1drq1Nx2R--5" value="PUT /api/v1/borrow/{id}/return" style="verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" edge="1" parent="1" source="COVKdI0WCa1drq1Nx2R--1" target="COVKdI0WCa1drq1Nx2R--2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="249" y="129" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="COVKdI0WCa1drq1Nx2R--6" value="returnBorrow()" style="verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" edge="1" parent="1" source="COVKdI0WCa1drq1Nx2R--2" target="COVKdI0WCa1drq1Nx2R--3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="493" y="183" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="COVKdI0WCa1drq1Nx2R--7" value="权限 &amp; 状态校验" style="curved=1;rounded=0;" edge="1" parent="1" source="COVKdI0WCa1drq1Nx2R--3" target="COVKdI0WCa1drq1Nx2R--3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="633" y="237" />
+              <mxPoint x="633" y="267" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="COVKdI0WCa1drq1Nx2R--8" value="更新归还时间 &amp; 状态" style="verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" edge="1" parent="1" source="COVKdI0WCa1drq1Nx2R--3" target="COVKdI0WCa1drq1Nx2R--4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="703" y="321" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="COVKdI0WCa1drq1Nx2R--9" value="更新成功" style="verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;dashed=1;dashPattern=2 3;" edge="1" parent="1" source="COVKdI0WCa1drq1Nx2R--4" target="COVKdI0WCa1drq1Nx2R--3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="703" y="375" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="COVKdI0WCa1drq1Nx2R--10" value="成功响应" style="verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;dashed=1;dashPattern=2 3;" edge="1" parent="1" source="COVKdI0WCa1drq1Nx2R--3" target="COVKdI0WCa1drq1Nx2R--2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="493" y="429" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="COVKdI0WCa1drq1Nx2R--11" value="归还成功" style="verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;dashed=1;dashPattern=2 3;" edge="1" parent="1" source="COVKdI0WCa1drq1Nx2R--2" target="COVKdI0WCa1drq1Nx2R--1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="249" y="483" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
