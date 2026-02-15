@@ -1,0 +1,78 @@
+<mxfile host="Electron" modified="2026-02-14T09:34:14.545Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.2.5 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="uewiiOeTR5o46vKLbTje" version="24.2.5" type="device">
+  <diagram name="第 1 页" id="1sxRcjJMpv-L-X84_6rk">
+    <mxGraphModel dx="1644" dy="783" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="-MtzRUrF1usTcqwxESe7-1" value="User" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=65;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="150" height="625" as="geometry" />
+        </mxCell>
+        <mxCell id="-MtzRUrF1usTcqwxESe7-2" value="Controller" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=65;" vertex="1" parent="1">
+          <mxGeometry x="237" y="20" width="150" height="625" as="geometry" />
+        </mxCell>
+        <mxCell id="-MtzRUrF1usTcqwxESe7-3" value="Service" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=65;" vertex="1" parent="1">
+          <mxGeometry x="424.5" y="20" width="150" height="625" as="geometry" />
+        </mxCell>
+        <mxCell id="-MtzRUrF1usTcqwxESe7-4" value="DB" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=65;" vertex="1" parent="1">
+          <mxGeometry x="750" y="20" width="150" height="625" as="geometry" />
+        </mxCell>
+        <mxCell id="-MtzRUrF1usTcqwxESe7-5" value="alt" style="shape=umlFrame;dashed=1;pointerEvents=0;dropTarget=0;strokeColor=#B3B3B3;height=20;width=30" vertex="1" parent="1">
+          <mxGeometry x="85" y="287" width="829" height="263" as="geometry" />
+        </mxCell>
+        <mxCell id="-MtzRUrF1usTcqwxESe7-6" value="[匹配成功]" style="text;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;" vertex="1" parent="-MtzRUrF1usTcqwxESe7-5">
+          <mxGeometry x="30" width="799" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="-MtzRUrF1usTcqwxESe7-7" value="POST /api/v1/ai/chat" style="verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" edge="1" parent="1" source="-MtzRUrF1usTcqwxESe7-1" target="-MtzRUrF1usTcqwxESe7-2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="214" y="129" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-MtzRUrF1usTcqwxESe7-8" value="chat(userInput)" style="verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" edge="1" parent="1" source="-MtzRUrF1usTcqwxESe7-2" target="-MtzRUrF1usTcqwxESe7-3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="422" y="183" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-MtzRUrF1usTcqwxESe7-9" value="matchKnowledgeBase(userInput)" style="curved=1;rounded=0;" edge="1" parent="1" source="-MtzRUrF1usTcqwxESe7-3" target="-MtzRUrF1usTcqwxESe7-3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="562" y="237" />
+              <mxPoint x="562" y="267" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-MtzRUrF1usTcqwxESe7-10" value="saveChatLog(userInput, answer, &quot;knowledge&quot;)" style="verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" edge="1" parent="1" source="-MtzRUrF1usTcqwxESe7-3" target="-MtzRUrF1usTcqwxESe7-4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="718" y="368" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-MtzRUrF1usTcqwxESe7-11" value="保存成功" style="verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;dashed=1;dashPattern=2 3;" edge="1" parent="1" source="-MtzRUrF1usTcqwxESe7-4" target="-MtzRUrF1usTcqwxESe7-3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="718" y="422" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-MtzRUrF1usTcqwxESe7-12" value="回复文本" style="verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;dashed=1;dashPattern=2 3;" edge="1" parent="1" source="-MtzRUrF1usTcqwxESe7-3" target="-MtzRUrF1usTcqwxESe7-2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="422" y="476" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-MtzRUrF1usTcqwxESe7-13" value="显示AI答案" style="verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;dashed=1;dashPattern=2 3;" edge="1" parent="1" source="-MtzRUrF1usTcqwxESe7-2" target="-MtzRUrF1usTcqwxESe7-1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="214" y="530" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

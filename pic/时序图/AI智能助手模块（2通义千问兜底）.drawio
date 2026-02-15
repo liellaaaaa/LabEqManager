@@ -1,0 +1,103 @@
+<mxfile host="Electron" modified="2026-02-14T09:44:56.273Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.2.5 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="ssKn5DGqJKrKjMaBmfp_" version="24.2.5" type="device">
+  <diagram name="第 1 页" id="buVWp4IcehboXwQnfsZt">
+    <mxGraphModel dx="1644" dy="783" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="C4et48DnVczS6PiO3_3O-1" value="User" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=65;" vertex="1" parent="1">
+          <mxGeometry x="20" y="20" width="150" height="817" as="geometry" />
+        </mxCell>
+        <mxCell id="C4et48DnVczS6PiO3_3O-2" value="Controller" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=65;" vertex="1" parent="1">
+          <mxGeometry x="220" y="20" width="150" height="817" as="geometry" />
+        </mxCell>
+        <mxCell id="C4et48DnVczS6PiO3_3O-3" value="Service" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=65;" vertex="1" parent="1">
+          <mxGeometry x="428.5" y="20" width="150" height="817" as="geometry" />
+        </mxCell>
+        <mxCell id="C4et48DnVczS6PiO3_3O-4" value="通义千问API" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=65;" vertex="1" parent="1">
+          <mxGeometry x="630" y="20" width="150" height="817" as="geometry" />
+        </mxCell>
+        <mxCell id="C4et48DnVczS6PiO3_3O-5" value="DB" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=65;" vertex="1" parent="1">
+          <mxGeometry x="800" y="20" width="150" height="817" as="geometry" />
+        </mxCell>
+        <mxCell id="C4et48DnVczS6PiO3_3O-6" value="alt" style="shape=umlFrame;dashed=1;pointerEvents=0;dropTarget=0;strokeColor=#B3B3B3;height=20;width=30" vertex="1" parent="1">
+          <mxGeometry x="85" y="287" width="837" height="455" as="geometry" />
+        </mxCell>
+        <mxCell id="C4et48DnVczS6PiO3_3O-7" value="[未命中]" style="text;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;" vertex="1" parent="C4et48DnVczS6PiO3_3O-6">
+          <mxGeometry x="30" width="807" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="C4et48DnVczS6PiO3_3O-8" value="POST /api/v1/ai/chat" style="verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" edge="1" parent="1" source="C4et48DnVczS6PiO3_3O-1" target="C4et48DnVczS6PiO3_3O-2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="214" y="129" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="C4et48DnVczS6PiO3_3O-9" value="chat(userInput)" style="verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" edge="1" parent="1" source="C4et48DnVczS6PiO3_3O-2" target="C4et48DnVczS6PiO3_3O-3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="422" y="183" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="C4et48DnVczS6PiO3_3O-10" value="matchKnowledgeBase(userInput)" style="curved=1;rounded=0;" edge="1" parent="1" source="C4et48DnVczS6PiO3_3O-3" target="C4et48DnVczS6PiO3_3O-3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="562" y="237" />
+              <mxPoint x="562" y="267" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="C4et48DnVczS6PiO3_3O-11" value="buildPrompt(userInput)" style="curved=1;rounded=0;" edge="1" parent="1" source="C4et48DnVczS6PiO3_3O-3" target="C4et48DnVczS6PiO3_3O-3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="562" y="368" />
+              <mxPoint x="562" y="398" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="C4et48DnVczS6PiO3_3O-12" value="call API" style="verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" edge="1" parent="1" source="C4et48DnVczS6PiO3_3O-3" target="C4et48DnVczS6PiO3_3O-4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="622" y="452" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="C4et48DnVczS6PiO3_3O-13" value="生成回复" style="verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;dashed=1;dashPattern=2 3;" edge="1" parent="1" source="C4et48DnVczS6PiO3_3O-4" target="C4et48DnVczS6PiO3_3O-3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="622" y="506" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="C4et48DnVczS6PiO3_3O-14" value="saveChatLog(userInput, answer, &quot;api&quot;)" style="verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" edge="1" parent="1" source="C4et48DnVczS6PiO3_3O-3" target="C4et48DnVczS6PiO3_3O-5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="722" y="560" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="C4et48DnVczS6PiO3_3O-15" value="保存成功" style="verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;dashed=1;dashPattern=2 3;" edge="1" parent="1" source="C4et48DnVczS6PiO3_3O-5" target="C4et48DnVczS6PiO3_3O-3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="722" y="614" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="C4et48DnVczS6PiO3_3O-16" value="回复文本" style="verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;dashed=1;dashPattern=2 3;" edge="1" parent="1" source="C4et48DnVczS6PiO3_3O-3" target="C4et48DnVczS6PiO3_3O-2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="422" y="668" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="C4et48DnVczS6PiO3_3O-17" value="显示AI答案" style="verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;dashed=1;dashPattern=2 3;" edge="1" parent="1" source="C4et48DnVczS6PiO3_3O-2" target="C4et48DnVczS6PiO3_3O-1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="214" y="722" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
